@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+button{
+    cursor: pointer;
+}
+:root{
+    --red-clr:#FF6F61;
+    --mid-red:#ff6e61bf;
+    --light-red:#ff6e6124;
+}
+/*Header Css*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 35px;
+}
+header nav{
+    min-width: 50%;
+}
+header nav ul{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: space-evenly;
+}
+header nav ul li a{
+    text-decoration: none;
+    color: rgb(255, 183, 0);
+    color: var(--red-clr);
+}
+.accountBox{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 7px gray;
+    cursor: pointer;
+}
+.accountBox:hover{
+    scale: 1.05;
+    transition: 300ms;
+}
+.accountBox img{
+    width: 95%;
+    border-radius: 50%;
+    -webkit-user-drag: none;
+}
+
+
+
+
+
+
+/*Timer CSS*/
+.timerBox{
+    width: 75%;
+    border: 1px solid var(--red-clr);
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 7px;
+    min-height: 400px;
+}
+.timerBoxHeader{
+    position: absolute;
+    width: 100%;
+}
+#addIntervalBtn{
+    background-color: var(--red-clr);
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    position: relative;
+    right: 0px;
+}
+#addIntervalBtn:active{
+    background-color: var(--mid-red);
+}
+.timerBox .intervalBox{
+    width: 100%;
+    padding: 15px;
+}
+.timerBox .interval{
+    width: 75%;
+    margin: 15px auto;
+    padding: 15px 35px;
+    background-color: var(--light-red);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+.interval div{
+    display: flex;
+    align-items: center;
+}
+.intervalBtn{
+    width: 35px;
+    height: 35px;
+    margin: 0px 20px;
+    background-color: var(--red-clr);
+    border: none;
+    color: white;
+    border-radius: 7px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.intervalBtn img{
+    width: 40%;
+}
+.intervalBtn:active{
+    background-color: var(--mid-red);
+}
+
+.timerCircuitsBox{
+    width: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 35px auto;
+    background-color: var(--light-red);
+    padding: 10px 20px;
+    border-radius: 7px;
+}

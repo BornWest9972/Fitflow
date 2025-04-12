@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.ClerkConfig = {
+          frontendApi: "pk_test_dW5pZmllZC1lbGYtNzUuY2xlcmsuYWNjb3VudHMuZGV2JA", 
+          
+        };
+      </script>
+      <script
+        crossorigin="anonymous"
+        data-clerk-publishable-key="pk_test_dW5pZmllZC1lbGYtNzUuY2xlcmsuYWNjb3VudHMuZGV2JA"
+        src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+        type="text/javascript"
+      ></script>
+</head>
+<body>
+    <div id="top"></div>
+    <header>
+        <h1>FitFlow</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#top">Home</a>
+                </li>
+                <li>
+                    <a href="#">Nutrition</a>
+                </li>
+                <li>
+                    <a href="#">Resources</a>
+                </li>
+                <li>
+                    <a href="#">Tracker</a>
+                </li>
+                <li>
+                    <a href="timer.html" >Timer</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="accountBox">
+            <img src="https://lh3.googleusercontent.com/a/ACg8ocLYFDqWSxOUTRmygxSqrpwEBnoAsUV8OCReKQ8kGaHWU6uK6eo=s96-c" alt="">
+        </div>
+        <!--sign out button-->
+        <button id="sign-out-btn">Sign Out</button>
+
+    </header>
+
+    <script>
+      window.addEventListener("load", async function () {
+        await window.Clerk.load();
+        const user = window.Clerk.user;
+  
+        if (!user) {
+          window.Clerk.mountSignIn(document.getElementById("auth-box"));
+          document.getElementById("sign-out-btn").style.display = "none";
+        } else {
+          document.getElementById("auth-box").innerHTML = `Welcome, ${user.firstName || "you're logged in"}!`;
+          document.getElementById("sign-out-btn").style.display = "inline-block";
+        }
+  
+        // sign-out function
+        document.getElementById("sign-out-btn").addEventListener("click", async () => {
+          await window.Clerk.signOut();
+          location.reload();
+        });
+      });
+    </script>
+      
+      <div id="auth-box"></div>   
+</body>
+</html>
