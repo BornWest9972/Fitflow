@@ -1,61 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitFlow</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitFlow</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <div id="top"></div>
-    <header>
-        <h1>FitFlow</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="index.html" target="_blank">Home</a>
-                </li>
-                <li>
-                    <a href="#">Nutrition</a>
-                </li>
-                <li>
-                    <a href="#">Resources</a>
-                </li>
-                <li>
-                    <a href="#">Tracker</a>
-                </li>
-                <li>
-                    <a href="#top">Timer</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="accountBox">
-            <img src="https://lh3.googleusercontent.com/a/ACg8ocLYFDqWSxOUTRmygxSqrpwEBnoAsUV8OCReKQ8kGaHWU6uK6eo=s96-c" alt="">
+  <div id="top"></div>
+  <header>
+    <h1>FitFlow</h1>
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html" target="_blank">Home</a>
+        </li>
+        <li>
+          <a href="#">Nutrition</a>
+        </li>
+        <li>
+          <a href="#">Resources</a>
+        </li>
+        <li>
+          <a href="#">Tracker</a>
+        </li>
+        <li>
+          <a href="#top">Timer</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="accountBox">
+      <img src="https://lh3.googleusercontent.com/a/ACg8ocLYFDqWSxOUTRmygxSqrpwEBnoAsUV8OCReKQ8kGaHWU6uK6eo=s96-c"
+        alt="" />
+    </div>
+  </header>
+  <main>
+    <section class="timerInfoBox">
+      <div class="timerBoxHeader">
+        <button id="addIntervalBtn">Add Interval</button>
+      </div>
+      <div id="intervalsBox">
+        <div id="intervalContainer"></div>
+        <div class="interval">
+          <p>Rest</p>
+          <div>
+            <span id="restTimeLabel">01:00</span><button class="intervalBtn" id="restIncreaseBtn">+</button>
+          </div>
         </div>
-    </header>
-    <main>
-        <section class="timerBox">
-            <div class="timerBoxheader">
-                <button id="addIntervalBtn">Add Interval</button>
-            </div>
-            <div id="intervalsBox">
-                <div class="interval">
-                    <p>Interval 1</p> <div><span>5:00</span><button class="intervalBtn"><img src="media/trash-solid.svg" alt=""></button></div>
-                </div>
-                <div class="interval">
-                    <p>Interval 2</p> <div><span>5:00</span><button class="intervalBtn"><img src="media/trash-solid.svg" alt=""></button></div>
-                </div>
-                <div class="interval">
-                    <p>Interval 3</p> <div><span>5:00</span><button class="intervalBtn"><img src="media/trash-solid.svg" alt=""></button></div>
-                </div>
-                <div class="interval">
-                    <p>Rest</p> <div><span>1:00</span><button class="intervalBtn">+</button></div>
-                </div>
-            </div>
-            <div class="timerCircuitsBox">
-                <span>5</span><p>Circuits</p><button class="intervalBtn">+</button>
-            </div>
-        </section>
-    </main>
+      </div>
+      <div class="timerCircuitsBox">
+        <span id="circuitsLabel">5</span>
+        <p>Circuits</p>
+        <button class="intervalBtn" onclick="decreaseCircuits()" style="margin-right: 3px;">-</button>
+        <button class="intervalBtn"  style="margin-left: 3px" onclick="increaseCircuits()">
+          +
+        </button>
+      </div>
+      <div class="timerCircuitsBox" style="margin: 0 auto; padding: 0; background-color: transparent">
+        <button id="timerStartBtn" class="timerStartBtn">START</button>
+      </div>
+    </section>
+    <section id="timerBox">
+      <div>
+      <p id="intervalNo">Interval 1</p>
+      <div class="timer">
+        <span id="timerTime">5:00</span>
+      </div>
+      <div>
+        <p>Circuit <span id="circuitNo">1</span></p>
+      </div>
+    </div>
+    </section>
+    <div id="addIntervalBox">
+      <div>
+        <span style="margin: 10px">Enter Time</span><input type="number" name="" id="timermins" /><span>:</span><input
+          type="text" id="timersecs" />
+      </div>
+      <button onclick="addingInterval()">ADD</button>
+    </div>
+    <div class="sideBar">
+      <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/OPfYx9DwZmc?si=wJouXIW4zie9qVWB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+    </div>
+  </main>
+  <script src="script.js"></script>
 </body>
+
 </html>

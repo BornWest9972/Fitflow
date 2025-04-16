@@ -1,40 +1,73 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-button{
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* border: 1px solid green; */
+  }
+  
+  button {
+    border: none;
+    outline: none;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  html::-webkit-scrollbar {
+    -webkit-appearance: none;
+    display: none;
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  button {
     cursor: pointer;
-}
-:root{
-    --red-clr:#FF6F61;
-    --mid-red:#ff6e61bf;
-    --light-red:#ff6e6124;
-}
-/*Header Css*/
-header{
+  }
+  
+  :root {
+    --red-clr: #ff6f61;
+    --mid-red: #ff6e61bf;
+    --light-red: #ff6e6124;
+    --green-clr: #85f85f;
+  }
+  
+  /*Header Css*/
+  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 15px 35px;
-}
-header nav{
+  }
+  
+  header nav {
     min-width: 50%;
-}
-header nav ul{
+  }
+  
+  header nav ul {
     display: flex;
     list-style: none;
     width: 100%;
     justify-content: space-evenly;
-}
-header nav ul li a{
+  }
+  
+  header nav ul li a {
     text-decoration: none;
     color: rgb(255, 183, 0);
     color: var(--red-clr);
-}
-.accountBox{
+  }
+  
+  .accountBox {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -43,53 +76,58 @@ header nav ul li a{
     justify-content: center;
     box-shadow: 2px 2px 7px gray;
     cursor: pointer;
-}
-.accountBox:hover{
+  }
+  
+  .accountBox:hover {
     scale: 1.05;
     transition: 300ms;
-}
-.accountBox img{
+  }
+  
+  .accountBox img {
     width: 95%;
     border-radius: 50%;
     -webkit-user-drag: none;
-}
-
-
-
-
-
-
-/*Timer CSS*/
-.timerBox{
+  }
+  
+  /*Timer CSS*/
+  .timerInfoBox {
     width: 75%;
     border: 1px solid var(--red-clr);
     margin: 20px auto;
     padding: 25px;
     border-radius: 7px;
     min-height: 400px;
-}
-.timerBoxHeader{
-    position: absolute;
-    width: 100%;
-}
-#addIntervalBtn{
+  }
+  
+  .timerBoxHeader {
+    position: relative;
+    width: 95%;
+    height: 60px;
+    padding: 10px;
+  }
+  
+  #addIntervalBtn {
     background-color: var(--red-clr);
     color: white;
     border: none;
     padding: 10px 10px;
     border-radius: 5px;
     font-weight: 700;
-    position: relative;
-    right: 0px;
-}
-#addIntervalBtn:active{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  #addIntervalBtn:active {
     background-color: var(--mid-red);
-}
-.timerBox .intervalBox{
+  }
+  
+  .timerInfoBox .intervalBox {
     width: 100%;
     padding: 15px;
-}
-.timerBox .interval{
+  }
+  
+  .timerInfoBox .interval {
     width: 75%;
     margin: 15px auto;
     padding: 15px 35px;
@@ -98,12 +136,14 @@ header nav ul li a{
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
-}
-.interval div{
+  }
+  
+  .interval div {
     display: flex;
     align-items: center;
-}
-.intervalBtn{
+  }
+  
+  .intervalBtn {
     width: 35px;
     height: 35px;
     margin: 0px 20px;
@@ -116,15 +156,18 @@ header nav ul li a{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.intervalBtn img{
+  }
+  
+  .intervalBtn img {
     width: 40%;
-}
-.intervalBtn:active{
+  }
+  
+  .intervalBtn:active,
+  #timerStartBtn:active {
     background-color: var(--mid-red);
-}
-
-.timerCircuitsBox{
+  }
+  
+  .timerCircuitsBox {
     width: 25%;
     display: flex;
     justify-content: space-evenly;
@@ -133,4 +176,88 @@ header nav ul li a{
     background-color: var(--light-red);
     padding: 10px 20px;
     border-radius: 7px;
-}
+  }
+  
+  .timerStartBtn {
+    font-weight: 800;
+    background-color: var(--red-clr);
+    color: white;
+    font-size: 1.2rem;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 7px;
+    margin: 10px auto;
+  }
+  
+  #timerBox {
+    padding: 30px;
+    text-align: center;
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 2rem;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--red-clr);
+    padding-bottom: 10%;
+  }
+  
+  #timerBox p {
+    margin: 20px auto;
+  }
+  
+  .timer {
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .timer span {
+    font-weight: 800;
+    font-size: 6rem;
+    font-family: Helvetica, sans-serif;
+  }
+  
+  #addIntervalBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid var(--mid-red);
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    border-radius: 3px;
+    display: none;
+  }
+  
+  #addIntervalBox input {
+    border: 1px solid gray;
+    margin: 2px;
+    padding: 2px;
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  #addIntervalBox button {
+    background-color: var(--red-clr);
+    border: none;
+    padding: 5px 7px;
+    margin-left: 25px;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  #addIntervalBox button:active {
+    background-color: var(--mid-red);
+  }
+  
