@@ -33,6 +33,7 @@ const timersecs = document.getElementById("timersecs");
 const intervalContainer = document.getElementById("intervalContainer");
 const restIncreaseBtn = document.getElementById("restIncreaseBtn");
 const circuitsLabel = document.getElementById("circuitsLabel");
+let seekBar = document.querySelector(".seekBar")
 let intervalTime;
 let StartTime;
 let intervalBackgroundColor;
@@ -156,11 +157,17 @@ timerStartBtn.addEventListener("click", () => {
 });
 
 let timerLoop;
+let runSeekBar;
 function starttimer() {
   timerLoop = setInterval(()=> {
-    
     runSec();
-  }, 1000);
+  }, 800);
+  runSeekBar = setInterval(()=>{
+    let currentTime = new Date().getTime();
+    let percentageDone = (((currentTime-StartTime)/(intervalTime*1000))*100)
+  seekBar.style.backgroundImage = `linear-gradient(to right,rgb(255, 255, 255) ${percentageDone}%,rgba(255, 255, 255, 0) ${percentageDone}%)`
+  console.log(percentageDone)
+  },10)
 }
 function runSec() {
   let currentTime = new Date().getTime();
@@ -205,6 +212,8 @@ function runSec() {
         timerBox.style.backgroundColor = intervalBackgroundColor;
       } else {
         clearInterval(timerLoop);
+        clearInterval(runSeekBar)
+        seekBar.style.backgroundImage = `linear-gradient(to right,rgb(255, 255, 255) ${0}%,rgba(255, 255, 255, 0) ${0}%)`
         intervals.pop();
         timerBox.style.display = "none";
         playerWindow.close();
