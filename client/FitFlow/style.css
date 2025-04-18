@@ -261,3 +261,12 @@
     background-color: var(--mid-red);
   }
   
+  .seekBar{
+    width: 100%;
+    background-image: linear-gradient(to right,rgb(255, 183, 96) 0%,rgb(255, 79, 79) 0%);
+    width: 100%;
+    position: absolute;
+    height: 50px;
+    bottom: 0;
+    left: 0;
+  }

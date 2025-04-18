@@ -33,6 +33,7 @@ const timersecs = document.getElementById("timersecs");
 const intervalContainer = document.getElementById("intervalContainer");
 const restIncreaseBtn = document.getElementById("restIncreaseBtn");
 const circuitsLabel = document.getElementById("circuitsLabel");
+let seekBar = document.querySelector(".seekBar")
 let intervalTime;
 let StartTime;
 let intervalBackgroundColor;
@@ -40,7 +41,7 @@ let totalCircuits = 5;
 let currentCircuit = 0;
 let currentInterval = 0;
 let restTime = 30;
-
+let WorkoutTime = 0;
 
 // ---------------------- Increase and Decrease Functions ----------------------
 document.getElementById("restTimeLabel").innerHTML = secToTime(restTime);
@@ -144,6 +145,7 @@ timerStartBtn.addEventListener("click", () => {
     StartTime = new Date().getTime();
     intervalTime =
       intervals[currentInterval][Object.keys(intervals[currentInterval])[0]];
+    WorkoutTime+=intervalTime
     timerTime.innerHTML = secToTime(intervalTime);
     if (Object.keys(intervals[currentInterval])[0] == "rest") {
       intervalBackgroundColor = "#85f85f";
@@ -156,11 +158,16 @@ timerStartBtn.addEventListener("click", () => {
 });
 
 let timerLoop;
+let runSeekBar;
 function starttimer() {
   timerLoop = setInterval(()=> {
-    
     runSec();
-  }, 1000);
+  }, 800);
+  runSeekBar = setInterval(()=>{
+    let currentTime = new Date().getTime();
+    let percentageDone = (((currentTime-StartTime)/(intervalTime*1000))*100)
+  seekBar.style.backgroundImage = `linear-gradient(to right,rgb(255, 255, 255) ${percentageDone}%,rgba(255, 255, 255, 0) ${percentageDone}%)`
+  },10)
 }
 function runSec() {
   let currentTime = new Date().getTime();
@@ -178,6 +185,7 @@ function runSec() {
       StartTime = new Date().getTime();
       intervalTime =
         intervals[currentInterval][Object.keys(intervals[currentInterval])[0]];
+        WorkoutTime+=intervalTime
       timerTime.innerHTML = secToTime(intervalTime);
       if (Object.keys(intervals[currentInterval])[0] == "rest") {
         intervalBackgroundColor = "#85f85f";
@@ -196,6 +204,7 @@ function runSec() {
           intervals[currentInterval][
             Object.keys(intervals[currentInterval])[0]
           ];
+          WorkoutTime+=intervalTime
         timerTime.innerHTML = secToTime(intervalTime);
         if (Object.keys(intervals[currentInterval])[0] == "rest") {
           intervalBackgroundColor = "#85f85f";
@@ -205,9 +214,21 @@ function runSec() {
         timerBox.style.backgroundColor = intervalBackgroundColor;
       } else {
         clearInterval(timerLoop);
+        clearInterval(runSeekBar)
+        seekBar.style.backgroundImage = `linear-gradient(to right,rgb(255, 255, 255) ${0}%,rgba(255, 255, 255, 0) ${0}%)`
         intervals.pop();
+        console.log(WorkoutTime)
+        WorkoutTime = 0
         timerBox.style.display = "none";
-        playerWindow.close();
+        let today = new Date();
+        let day = today.getDate();  
+        let month = today.getMonth() + 1;  
+        let year = today.getFullYear(); 
+
+        // ---------------------- Sending Time Spent on Timer to DataBase ----------------------
+        let timeSpentOnTimer = {[`${day}/${month}/${year}`]:WorkoutTime}
+
+        // playerWindow.close();
         currentCircuit = 0;
         currentInterval = 0;
       }
